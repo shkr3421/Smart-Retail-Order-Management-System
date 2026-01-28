@@ -95,31 +95,11 @@ def order_and_billing_menu(inventory):
 
     bill.display_bill()
 
-    print("\nPayment Method:")
-    print("1. Cash")
-    print("2. Card")
-    print("3. UPI")
-
-    choice = input("Choose payment: ")
-    total = bill.calculate_total()
-
-    if choice == "1":
-        result = PaymentProcessor.process_cash_payment(total)
-    elif choice == "2":
-        result = PaymentProcessor.process_card_payment(total)
-    elif choice == "3":
-        result = PaymentProcessor.process_upi_payment(total)
-    else:
-        print("❌ Invalid payment option")
-        return
-
-    print(result["message"])
-
-    if result.get("success"):
-        bill.set_payment_info(result["method"])
-        bill.save_to_csv()
+    if bill.process_payment():
+        bill.save_to_csv()          # saves data to daily_sales.csv
         save_inventory_to_file(inventory)
-
+    else:
+        print("❌ Payment failed. Order not saved.")
 
 def main():
     try:
