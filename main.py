@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from product import Product
 from order import Order
 from billing import Bill, PaymentProcessor
