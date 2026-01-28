@@ -151,6 +151,47 @@ class Bill:
         print("        Thank you for shopping!")
         print("=" * 50)
 
+    def process_payment(self):
+        """Handle payment and update bill payment info"""
+        if self.is_empty():
+            print("⚠ Cannot process payment for empty bill")
+            return False
+
+        total_amount = self.calculate_total()
+
+        print("\nSelect Payment Method:")
+        print("1. Cash")
+        print("2. Card")
+        print("3. UPI")
+
+        choice = input("Enter choice: ")
+
+        if choice == "1":
+            result = PaymentProcessor.process_cash_payment(total_amount)
+        elif choice == "2":
+            result = PaymentProcessor.process_card_payment(total_amount)
+        elif choice == "3":
+            result = PaymentProcessor.process_upi_payment(total_amount)
+        else:
+            print("❌ Invalid payment option")
+            return False
+
+        print(result.get("message", ""))
+
+        if result.get("success"):
+            self.set_payment_info(
+                method=result.get("method", "Cash"),
+                status="Completed"
+            )
+            return True
+
+        self.set_payment_info(
+            method=result.get("method", "Cash"),
+            status="Failed"
+        )
+        return False
+
+
     def set_payment_info(self, method: str, status: str = "Completed"):
         """Set payment method and status"""
         self.payment_method = method
