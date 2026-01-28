@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 class Order:
     """
     Handles customer order/cart only
