@@ -9,19 +9,19 @@ This project follows a **modular, team-based design**, where each functionality 
 
 ## 📌 Features
 
-### ✅ Product Management
+### Product Management
 - View product catalogue
 - Add new products
 - Update product stock
 - Delete products
 - Low-stock product alerts
 
-### ✅ Order Management
+### Order Management
 - Add products to cart
 - Validate stock availability
 - Prevent invalid quantities
 
-### ✅ Billing System
+### Billing System
 - Generate detailed customer bill
 - Apply discounts and tax (GST)
 - Multiple payment methods:
@@ -30,17 +30,17 @@ This project follows a **modular, team-based design**, where each functionality 
   - UPI
 - Final payable amount calculation
 
-### ✅ File Handling (No Database)
+### File Handling (No Database)
 - Products stored in `products.csv`
 - Sales data stored in `daily_sales.csv`
 - Data persists across program runs
 
-### ✅ Reports
+### Reports
 - Daily sales summary
 - Payment method summary
 - Top-selling products
 
-### ✅ Exception Handling
+### Exception Handling
 - Invalid user inputs
 - File read/write errors
 - Safe program termination using `KeyboardInterrupt`
