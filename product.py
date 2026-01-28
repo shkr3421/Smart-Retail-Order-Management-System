@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 class Product:
     """
     Represents a single product in the store
