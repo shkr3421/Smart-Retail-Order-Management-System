@@ -1,6 +1,6 @@
 from product import Product, load_inventory
 from order import Order
-from billing import Bill, PaymentProcessor
+from billing import Bill, PaymentProcessor, ReportGenerator
 from product_file_io import load_inventory_from_file, save_inventory_to_file
 
 
@@ -135,7 +135,10 @@ def main():
             print("1. Product Management")
             print("2. Place Order & Billing")
             print("3. Low Stock Products")
-            print("4. Exit")
+            print("4. Daily Sales Summary")
+            print("5. Payment Summary")
+            print("6. Exit")
+
 
             choice = input("Choice: ")
 
@@ -149,10 +152,14 @@ def main():
                     print("==== The item which has low quantity left in stocks ====")
                     print("        Product name -",p.name, " , Amount left -", p.stock)
             elif choice == "4":
+                ReportGenerator.display_daily_summary()
+
+            elif choice == "5":
+                ReportGenerator.display_payment_summary()
+
+            elif choice == "6":
                 print("👋 Thank you, visit again!")
                 break
-            else:
-                print("❌ Invalid option")
 
     except KeyboardInterrupt:
         print("\n👋 Program terminated by user")
